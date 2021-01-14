@@ -1,3 +1,16 @@
+# nestjs-study
+Start, Nest.js
+
+
+## NESTJS
+- it is running on express
+- based on TypeScript 100% ( 왜 NestTS가 아니란 말이란 말이지. )
+- 견고하고 친화적이다. NodeJS의 프리함을 잡아줌. Rule + Structure like django, spring..
+
+
+<br>
+<br>
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>

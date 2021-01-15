@@ -6,6 +6,7 @@ Start, Nest.js
 - it is running on express
 - based on TypeScript 100% ( 왜 NestTS가 아니란 말이란 말이지. )
 - 견고하고 친화적이다. NodeJS의 프리함을 잡아줌. Rule + Structure like django, spring..
+- Express와 Fastify, 두 개의 프레임워크에서 돌아감. switch가 가능하다. 따라서 Express의 req, res 객체를 많이 사용하지 않는 것이 좋음
 
 ### Set up
 - @nestjs/cli
@@ -77,6 +78,17 @@ ctrl을 누른채 모듈위에 마우스를 대면 모듈 위치로 이동.
 |src/app.controller.ts|`controllers` take URL, execute fucntion. like Express Router (middleware).|
 |src/app.service.ts|`providers`|
 
+<br>
+
+We can Only have 2, AppController, AppService <br>
+`$ nest generate module` <br>
+what name ... ? movies <br>
+> CREATE src/movies/movies.module.ts (83 bytes) <br>
+> UPDATE src/app.module.ts (349 bytes) <br>
+App.module에 controller와 provider는 AppController, AppService만. <br>
+다른 controller, provider는 모듈로 만들어 App에서 import
+
+
 ### Architecture
 #### Why NestJS seperate Controller / Service?
 - `controller` : Only Get URL, Return Function
@@ -85,7 +97,7 @@ ctrl을 누른채 모듈위에 마우스를 대면 모듈 위치로 이동.
 - Service에 비즈니스 로직을 작성한다.
 
 
-### Concepts
+### Concepts & Feature
 #### Decorator @
 - 클래스에 함수의 기능을 추가할 수 있다.
 - Takes URL and Mapping Function. We don't nedd to set up Router
@@ -110,8 +122,35 @@ sayHello(): string { <br>
   }
 }
 ```
+<br>
 
+#### DTO
+- Data Transfer Object
+- 코드를 간결하고 유효성을 검사해준다.
+- 여기서는 Update에서 키를 검증하기 위해 사용함. create, update의 args인 movieData, updateData의 타입을 만들어주기 위해서
+- DTO를 만든 것만으로 유효성이 검사되는 것은 아니다. `파이프`를 만들어주어야 한다. 미들웨어 같은거임
+- `$ class-validator`, $ `class-transformer` 이용
+```bash
+// app.module.ts
+app.useGlobalPipes(new ValidationPipe());
 
+// create-movie.dto.ts
+@IsString, @IsNumber
+
+// 거의 모든 유효성을 검사할 수 있다.
+@IsOptioanl @Length(10,20) @Contains('hello') @Min(10) @FQDN @IsEmail...
+```
+
+#### PartialType
+- $ npm i @nestjs/types <br>
+: 타입을 변환시키고 사용할 수 있게 하는 패키지
+```bash
+class puppy extends PartialType(Dog) { ... }
+```
+<br>
+
+#### Dependency Injection
+- 타입에 Import하는 것 만으로도 클래스를 임포트 한 것 같은효과
 
 
 <br>

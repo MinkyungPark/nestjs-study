@@ -97,7 +97,7 @@ App.module에 controller와 provider는 AppController, AppService만. <br>
 ### Concepts & Feature
 #### Decorator @
 - 클래스에 함수의 기능을 추가할 수 있다.
-- Takes URL and Mapping Function. We don't nedd to set up Router
+- Takes URL and Mapping Function. We don't need to set up Router
 - app.controllers.ts의 @Get 데코레이터는 express의 get 라우터 같은 역할을 한다. <br>
 @Get('/hello') <br>
 sayHello(): string { <br>
@@ -152,20 +152,27 @@ class puppy extends PartialType(Dog) { ... }
 
 #### TESTING In Nest
 1. "test": "jest"
-2. "test:watch": "jest --watch"
-3. "test:cov": "jest --coverage"
+2. "test:watch": "jest --watch" <br>
 : jest는 javascript 쉽게 테스팅하는 npm 패키지 <br>
 `spec.ts` 파일을 찾아 테스팅
+3. "test:cov": "jest --coverage" <br>
+: 전체의 몇% 파일까지 테스팅 했는지 알려줌
+
 
 4. "test:debug": "node --inspect-brk -r tsconfig-paths/register -r  <br>ts-node/register node_modules/.bin/jest --runInBand"
 5. "test:e2e": "jest --config ./test/jest-e2e.json" <br>
 <br>
 
-##### 1.  Unit Test : 모든 function을 따로 테스트, 서비스에서 분리된 function test
+##### 1)  Unit Test : 모든 function을 따로 테스트, 서비스에서 분리된 function test
+- spec.ts 파일
+- beforeEach() : 각 유닛 테스트 실행 전에 실행
+- afterAll() : 테스트 후, 예) DB CLEAN
+- beforeAll()
 
 <br>
 
-##### 2. End-to-End(e2e) Test: 모든 시스템 테스팅
+##### 2) End-to-End(e2e) Test: 모든 시스템 테스팅
+- test/ 폴더
 - 특정 페이지가 나와야 하는경우, 사용자 스토리, 사용자 관점
 - 사용자가 취할만한 액션을 모두 테스팅
 

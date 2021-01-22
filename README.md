@@ -41,6 +41,9 @@ $ nest  // 명령어 확인
 $ nest new  // generate new project
 $ nest generate  // we can make All of NestJS thing by command line
 ```
+```bash
+ctrl을 누른채 모듈위에 마우스를 대면 모듈 위치로 이동.
+```
 <br>
 
 - npm run
@@ -60,12 +63,6 @@ $ nest generate  // we can make All of NestJS thing by command line
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
-```
-<br>
-
-- TIPS
-```bash
-ctrl을 누른채 모듈위에 마우스를 대면 모듈 위치로 이동.
 ```
 <br>
 
@@ -151,9 +148,27 @@ class puppy extends PartialType(Dog) { ... }
 
 #### Dependency Injection
 - 타입에 Import하는 것 만으로도 클래스를 임포트 한 것 같은효과
+<br>
 
+#### TESTING In Nest
+1. "test": "jest"
+2. "test:watch": "jest --watch"
+3. "test:cov": "jest --coverage"
+: jest는 javascript 쉽게 테스팅하는 npm 패키지 <br>
+`spec.ts` 파일을 찾아 테스팅
+
+4. "test:debug": "node --inspect-brk -r tsconfig-paths/register -r  <br>ts-node/register node_modules/.bin/jest --runInBand"
+5. "test:e2e": "jest --config ./test/jest-e2e.json" <br>
+<br>
+
+##### 1.  Unit Test : 모든 function을 따로 테스트, 서비스에서 분리된 function test
 
 <br>
+
+##### 2. End-to-End(e2e) Test: 모든 시스템 테스팅
+- 특정 페이지가 나와야 하는경우, 사용자 스토리, 사용자 관점
+- 사용자가 취할만한 액션을 모두 테스팅
+
 <br>
 <br>
 

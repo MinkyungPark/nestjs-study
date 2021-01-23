@@ -3,8 +3,8 @@ import { get } from 'http';
 
 @Controller('')
 export class AppController {
-    @Get()
-    getHome() {
-        return 'Welcome this is HOME';
-    }
+  @Get()
+  getHome() {
+    return 'Welcome this is HOME';
+  }
 }
